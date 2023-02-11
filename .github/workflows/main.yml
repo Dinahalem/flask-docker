@@ -6,7 +6,7 @@ on:
     branches: [ master ]
     
 jobs:
-  push_to_registry:
+  build:
     runs-on: self-hosted
     steps:
       - name: Check out the repo
@@ -27,25 +27,17 @@ jobs:
         with:
           context: .
           push: true
-          tags: testflask
+          tags: dina2022/flaskdocker
         
             
   Run_container:
     name: run container
+    needs: build
     runs-on: self-hosted  
     steps:         
     - name: Build container
       run: |       
           #docker stop test-devops
           #docker rm test-devops
-          docker run -d -p 9999:9999 --name flaskbuild testflask
+          docker run -d -p 9999:9999 --name flaskbuild dina2022/flaskdocker
     
-  deploy_to_kubernetes_cluster:
-    name: Deploy to k8ss
-    runs-on: self-hosted  
-    steps:               
-    - name: Deployment on K8s 
-      run: |  
-          minikube start
-          kubectl apply -f botit-deployment.yaml
-          kubectl apply -f node-port.yaml
