@@ -1,4 +1,4 @@
-name: CI/CD pipeline
+name: build flask docker
 on:
   push:
     branches: [ master ]
