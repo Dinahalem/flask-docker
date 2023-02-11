@@ -41,7 +41,7 @@ jobs:
       run: |       
           #docker stop test-devops
           #docker rm test-devops
-          docker run -d -p 9000:9000 --name flaskbuild testflask
+          docker run -d -p 9999:9999 --name flaskbuild testflask
     
   deploy_to_kubernetes_cluster:
     name: Deploy to k8ss
