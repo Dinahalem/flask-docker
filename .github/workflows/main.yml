@@ -31,8 +31,7 @@ jobs:
           tags: testflask
         
 
-           
-          
+               
   Run_container:
     name: run container
     runs-on: self-hosted  
