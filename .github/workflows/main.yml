@@ -20,7 +20,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          repository: Dinahalem/Bitot_test
+          repository: Dinahalem/flask-docker
           
       - name: Build and push
         uses: docker/build-push-action@v2
