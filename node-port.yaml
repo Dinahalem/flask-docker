@@ -1,19 +1,12 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Service
 metadata:
-  name: flask-deployment
+  name: node-port
 spec:
-  replicas: 3
   selector:
-    matchLabels:
-      component: botit
-  template:
-    metadata:
-      labels:
-        component: botit
-    spec:
-      containers:
-      - name: project
-        image: dina2022/flaskdocker
-        ports:
-        - containerPort: 9999
+    component: botit
+  ports:
+  - protocol: "TCP"
+    port: 9999
+    targetPort: 9999
+  type: NodePort
