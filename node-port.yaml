@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: botit-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      component: botit
+  template:
+    metadata:
+      labels:
+        component: botit
+    spec:
+      containers:
+      - name: project
+        image: dina2022/flaskdocker
+        ports:
+        - containerPort: 9999
