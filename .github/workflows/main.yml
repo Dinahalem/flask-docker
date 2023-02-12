@@ -40,7 +40,8 @@ jobs:
           docker stop flaskbuild
           docker rm flaskbuild
           docker run -d -p 9999:9999 --name flaskbuild dina2022/flaskdocker
-  deploy_to_kubernetes_cluster:
+  
+  kubernetes_cluster:
     name: Deploy to k8ss
     runs-on: self-hosted  
     steps:               
@@ -49,3 +50,23 @@ jobs:
           minikube start
           kubectl apply -f flask-deployment.yaml
           kubectl apply -f node-port.yaml
+ 
+  #deploy_to_EC2:
+    #name: Deploy to EC2
+    #runs-on: self-hosted
+    #steps:
+    #- name: success
+      #env: 
+          #SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
+          #SOURCE: /
+          #REMOTE_HOST: ${{secrets.SSH_HOST}}
+          #REMOTE_USER:  ${{secrets.SSH_USER}}
+          #TARGET:  ${{secrets.TARGET_DIR}}
+      #run: |
+          #docker stop flaskbuild
+          #docker rm flaskbuild
+          #docker run -d -p 9999:9999 --name flaskbuild dina2022/flaskdocker
+     
+    #- name: fail
+      #run: echo 'Fail deploy to EC2 server'
+     
