@@ -13,7 +13,7 @@ spec:
         component: botit
     spec:
       containers:
-      - name: project
+      - name: flaskbuild
         image: dina2022/flaskdocker
         ports:
         - containerPort: 9999
