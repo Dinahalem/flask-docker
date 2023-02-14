@@ -98,6 +98,7 @@ resource "aws_instance" "first-server" {
   instance_type = "t2.micro"
   availability_zone = "us-east-1a"
   key_name = "main-key"
+  security_groups = ["${aws_security_group.allow_web.name"}"]
 
   network_interface {
     device_index = 0
