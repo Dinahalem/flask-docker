@@ -45,7 +45,6 @@ jobs:
     name: Deploy to k8s
     runs-on: self-hosted 
     needs: [build, Run_container]
-    if: ${{ always() }}
     steps:               
     - name: Deployment on K8s 
       run: |  
@@ -70,5 +69,6 @@ jobs:
           #docker run -d -p 9999:9999 --name flaskbuild dina2022/flaskdocker
      
     #- name: fail
+      #if: steps.master.output==1 
       #run: echo 'Fail deploy to EC2 server'
      
