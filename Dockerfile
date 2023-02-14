@@ -5,4 +5,5 @@ COPY ./requirements.txt /app/requirements.txt
 RUN pip install -r requirements.txt
 COPY . /app
 EXPOSE 9999
-CMD ["python","hello.py"]
+ENTRYPOINT ["python","hello.py"]
+ENTRYPOINT ["python", "test_hello.py"]
