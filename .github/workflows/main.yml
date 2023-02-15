@@ -53,6 +53,7 @@ jobs:
           kubectl apply -f node-port.yaml
  
  
+ 
   #deploy_to_EC2:
     #name: Deploy to EC2
     #runs-on: self-hosted
