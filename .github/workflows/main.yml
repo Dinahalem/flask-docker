@@ -37,8 +37,8 @@ jobs:
     steps:         
     - name: Build container
       run: |       
-          docker stop flaskbuild
-          docker rm flaskbuild
+          #docker stop flaskbuild
+          #docker rm flaskbuild
           docker run -d -p 9999:9999 --name flaskbuild dina2022/flaskdocker
   
   kubernetes_cluster:
