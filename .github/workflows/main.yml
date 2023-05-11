@@ -20,13 +20,13 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          repository: $DOCKERHUB_USERNAME/flaskdocker
+          repository: DOCKERHUB_USERNAME/$DOCKER_REPO
           
       - name: Get commit hash
         run: COMMIT_HASH=$(git rev-parse --short HEAD)
         
       - name: Build Docker image
-        run: docker build . -t $DOCKERHUB_USERNAME/flaskdocker:$COMMIT_HASH
+        run: docker build . -t DOCKERHUB_USERNAME/$DOCKER_REPO:$COMMIT_HASH
       
       - name: Push Docker image
         run: docker push $DOCKERHUB_USERNAME/$DOCKER_REPO:$COMMIT_HASH
