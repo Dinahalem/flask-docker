@@ -20,7 +20,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          repository: $DOCKERHUB_USERNAME/$DOCKER_REPO
+          repository: Dinahalem/flask-docker
           
       - name: Get commit hash
         run: COMMIT_HASH=$(git rev-parse --short HEAD)
