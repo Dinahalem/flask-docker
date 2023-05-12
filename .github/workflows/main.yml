@@ -30,7 +30,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: dina2022/flaskdocker
+          tags: dina2022/flaskdocker:$COMMIT_HASH
         #run: docker build -t dina2022/flaskdocker:$COMMIT_HASH .
       
       #- name: Push Docker image
@@ -44,9 +44,9 @@ jobs:
     steps:         
     - name: Build container
       run: |       
-          docker stop flaskbuild
-          docker rm flaskbuild
-          docker run -d -p 9999:9999 --name flaskbuild dina2022/flaskdocker
+          #docker stop flaskbuild
+          #docker rm flaskbuild
+          docker run -d -p 9999:9999 --name flaskbuild dina2022/flaskdocker:$COMMIT_HASH
   
   kubernetes_cluster:
     name: Deploy to k8s
