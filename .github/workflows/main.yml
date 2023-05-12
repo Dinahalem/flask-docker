@@ -28,6 +28,7 @@ jobs:
       - name: Build Docker image
         uses: docker/build-push-action@v1
         with:
+          context: .
           push: true
           tags: $DOCKERHUB_USERNAME/$DOCKER_REPO:$COMMIT_HASH
         #run: docker build -t dina2022/flaskdocker:$COMMIT_HASH .
