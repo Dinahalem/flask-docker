@@ -20,7 +20,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          repository: Dinahalem/flask-docker
+          #repository: Dinahalem/flask-docker
           
       - name: Get commit hash
         run: |
@@ -33,7 +33,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: dina2022/flaskdocker:${COMMIT_HASH}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/flaskdocker:${COMMIT_HASH}
         #run: docker build -t dina2022/flaskdocker:$COMMIT_HASH .
       
       #- name: Push Docker image
