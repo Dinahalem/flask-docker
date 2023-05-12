@@ -24,7 +24,7 @@ jobs:
           
       - name: Get commit hash
         run: |
-          COMMIT_HASH=$(git rev-parse --short HEAD)
+          COMMIT_HASH=$(git rev-parse --short HEAD | sed 's/[^a-zA-Z0-9._-]/-/g')
           chmod +x build.sh
           ./build.sh
         
