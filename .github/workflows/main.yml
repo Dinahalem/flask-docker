@@ -25,7 +25,8 @@ jobs:
       - name: Get commit hash
         run: |
           COMMIT_HASH=$(git rev-parse --short HEAD)
-          sudo ./build.sh
+          chmod +x build.sh
+          ./build.sh
         
       - name: Build Docker image
         uses: docker/build-push-action@v2
