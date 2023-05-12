@@ -33,7 +33,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/flaskdocker:$(date +%s)
+          tags: myimage:$(date +%s)
         #run: docker build -t dina2022/flaskdocker:$COMMIT_HASH .
       
       #- name: Push Docker image
@@ -49,7 +49,7 @@ jobs:
       run: |       
           #docker stop flaskbuild
           #docker rm flaskbuild
-          docker run -d -p 9999:9999 --name flaskbuild dina2022/flaskdocker:${COMMIT_HASH}
+          docker run -d -p 9999:9999 --name flaskbuild myimage:$(date +%s)
   
   kubernetes_cluster:
     name: Deploy to k8s
