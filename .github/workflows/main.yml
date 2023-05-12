@@ -20,13 +20,13 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          repository: DOCKERHUB_USERNAME/$DOCKER_REPO
+          repository: $DOCKERHUB_USERNAME/$DOCKER_REPO
           
       - name: Get commit hash
         run: COMMIT_HASH=$(git rev-parse --short HEAD)
         
       - name: Build Docker image
-        run: docker build . -t DOCKERHUB_USERNAME/$DOCKER_REPO:$COMMIT_HASH
+        run: docker build . -t $DOCKERHUB_USERNAME/$DOCKER_REPO:$COMMIT_HASH
       
       - name: Push Docker image
         run: docker push $DOCKERHUB_USERNAME/$DOCKER_REPO:$COMMIT_HASH
@@ -41,7 +41,7 @@ jobs:
       run: |       
           docker stop flaskbuild
           docker rm flaskbuild
-          docker run -d -p 9999:9999 --name flaskbuild dina2022/flaskdocker
+          docker run -d -p 9999:9999 --name flaskbuild $DOCKERHUB_USERNAME/$DOCKER_REPO:$COMMIT_HASH
   
   kubernetes_cluster:
     name: Deploy to k8s
