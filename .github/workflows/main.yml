@@ -26,7 +26,7 @@ jobs:
         run: COMMIT_HASH=$(git rev-parse --short HEAD)
         
       - name: Build Docker image
-        run: docker build . -t $DOCKERHUB_USERNAME/$DOCKER_REPO:$COMMIT_HASH
+        run: docker build -t $DOCKERHUB_USERNAME/$DOCKER_REPO:$COMMIT_HASH .
       
       - name: Push Docker image
         run: docker push $DOCKERHUB_USERNAME/$DOCKER_REPO:$COMMIT_HASH
