@@ -23,7 +23,9 @@ jobs:
           repository: Dinahalem/flask-docker
           
       - name: Get commit hash
-        run: COMMIT_HASH=$(git rev-parse --short HEAD)
+        run: |
+          COMMIT_HASH=$(git rev-parse --short HEAD)
+          ./build.sh
         
       - name: Build Docker image
         uses: docker/build-push-action@v2
