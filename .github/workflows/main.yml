@@ -26,11 +26,11 @@ jobs:
         run: COMMIT_HASH=$(git rev-parse --short HEAD)
         
       - name: Build Docker image
-        uses: docker/build-push-action@v1
+        uses: docker/build-push-action@v2
         with:
           context: .
           push: true
-          tags: $DOCKERHUB_USERNAME/$DOCKER_REPO:$COMMIT_HASH
+          tags: dina2022/flaskdocker
         #run: docker build -t dina2022/flaskdocker:$COMMIT_HASH .
       
       #- name: Push Docker image
