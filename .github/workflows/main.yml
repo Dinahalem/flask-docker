@@ -33,7 +33,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: dina2022/python-flask:1.1
+          tags: dina2022/python-flask:${{ secrets.COMMIT_HASH }}
         #run: docker build -t dina2022/flaskdocker:$COMMIT_HASH .
       
       #- name: Push Docker image
@@ -43,7 +43,7 @@ jobs:
   Run_container:
     name: run container
     needs: build
-    runs-on: self-hosted  
+    runs-on: ubuntu-latest  
     steps:         
     - name: Build container
       run: |       
@@ -53,7 +53,7 @@ jobs:
   
   kubernetes_cluster:
     name: Deploy to k8s
-    runs-on: self-hosted 
+    runs-on: ubuntu-latest 
     needs: [build, Run_container]
     steps:               
     - name: Deployment on K8s 
