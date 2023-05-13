@@ -59,8 +59,8 @@ jobs:
     - name: Deployment on K8s 
       run: |  
           minikube start
-          kubectl create -f ./flask-deployment.yaml
-          kubectl create -f ./node-port.yaml
+          kubectl apply -f flask-docker/flask-deployment.yaml
+          kubectl apply -f flask-docker/node-port.yaml
  
  
  
