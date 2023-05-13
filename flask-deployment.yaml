@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: flaskbuild
-          image: dina2022/flaskdocker
+          image: dina2022/python-flask:${{ secrets.COMMIT_HASH }}
           ports:
            - containerPort: 9999
