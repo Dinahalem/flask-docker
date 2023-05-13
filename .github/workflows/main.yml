@@ -33,7 +33,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: dina2022/python-flask:${{COMMIT_HASH}}
+          tags: dina2022/python-flask:1.1
         #run: docker build -t dina2022/flaskdocker:$COMMIT_HASH .
       
       #- name: Push Docker image
